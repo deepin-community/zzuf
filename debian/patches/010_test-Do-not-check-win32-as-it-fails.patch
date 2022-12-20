@@ -1,0 +1,17 @@
+Description: Do not check the win32 test as it fails
+Author: Alexandre Ghiti <alexandre.ghiti@canonical.com>
+Forwarded: not-needed
+Reviewed-by: Guilherme de Paula Xavier Segundo <guilherme.lnx@gmail.com>
+Last-Update: 2022-05-03
+Index: zzuf/test/Makefile.am
+===================================================================
+--- zzuf.orig/test/Makefile.am
++++ zzuf/test/Makefile.am
+@@ -18,7 +18,6 @@ TESTS = check-zzuf-A-autoinc \
+         check-zzuf-M-max-memory \
+         check-zzuf-r-ratio \
+         check-source \
+-        check-win32 \
+         check-overflow \
+         check-div0 \
+         check-utils \

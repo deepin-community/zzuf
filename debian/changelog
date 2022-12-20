@@ -1,0 +1,176 @@
+zzuf (0.15-deepin1) unstable; urgency=medium
+
+  * update version
+  * Add the debian upstream patch
+
+ -- Deepin Packages Builder <packages@deepin.org>  Mon, 21 Nov 2022 11:05:24 +0800
+
+zzuf (0.15-1) unstable; urgency=medium
+
+  * New upstream release.
+  * This version fixes the testsuite for recent glibcs (Closes: #808696).
+
+ -- Sam Hocevar <sho@debian.org>  Tue, 03 May 2016 08:32:17 +0200
+
+zzuf (0.14-1) unstable; urgency=low
+
+  * New upstream release.
+  * This version includes a few testsuite fixes (Closes: #790297).
+  * Remove Debian-specific patches; they’ve all been applied upstream.
+
+ -- Sam Hocevar <sho@debian.org>  Sun, 28 Jun 2015 00:09:33 +0200
+
+zzuf (0.13.svn20100215-4) unstable; urgency=low
+
+  * debian/patches/200_libc_symbol_versioning.diff: fix a problem with
+    libc6 symbol versioning where we would call fopen() version GLIBC_2.0
+    but freopen() would think we were using version GLIBC_2.1 and thus
+    corrupt the stream contents.
+
+ -- Sam Hocevar <sho@debian.org>  Tue, 17 Apr 2012 01:20:43 +0200
+
+zzuf (0.13.svn20100215-3) unstable; urgency=low
+
+  * debian/rules: -D_FORTIFY_SOURCE breaks zzuf; make sure this macro is
+    not set in CFLAGS. Patch courtesy of Matthias Klose (Closes: #642100).
+  * debian/rules: add build-arch and build-indep rules.
+  * debian/control: set policy to 3.9.3.
+
+ -- Sam Hocevar <sho@debian.org>  Sun, 08 Apr 2012 11:00:29 +0200
+
+zzuf (0.13.svn20100215-2) unstable; urgency=high
+
+  * debian/patches/100_more_tolerant_test.diff: when one of the -r unit
+    tests fails, try it again up to three times (Closes: #577294). Patch
+    from upstream SVN.
+  * debian/rules: misc fixes, courtesy of Loïc Minier (Closes: #575683).
+    Fixes concurrent builds and adds support for nocheck.
+
+ -- Sam Hocevar <sho@debian.org>  Mon, 19 Apr 2010 22:02:22 +0000
+
+zzuf (0.13.svn20100215-1) unstable; urgency=low
+
+  * New SVN snapshot. Renames zzcat into zzat to avoid an unfortunate
+    conflict with zziplib (Closes: #568426).
+
+ -- Sam Hocevar <sho@debian.org>  Mon, 15 Feb 2010 22:26:37 +0100
+
+zzuf (0.13-1) unstable; urgency=low
+
+  * New upstream release.
+  * This release properly handles the getc_unlocked() call used by new
+    versions of sed. The test suite passes again (Closes: #533977, #562434).
+  * This release fixes a problem with memory limit detection (Closes: #566552).
+  * debian/rules:
+    + Fix a race condition in the build rule (Closes: #543458).
+
+ -- Sam Hocevar <sho@debian.org>  Sun, 31 Jan 2010 17:54:31 +0000
+
+zzuf (0.12.svn20091212-1) experimental; urgency=low
+
+  * New SVN snapshot.
+  * This snapshot properly handles the getc_unlocked() call used by new
+    versions of sed. The test suite passes again (Closes: #533977).
+  * debian/control:
+    + Build-depend on missing ${misc:Depends}.
+    + Set policy to 3.8.3.
+  * debian/source/format:
+    + Switch to 3.0 (quilt) source format.
+  * debian/rules:
+    + Fix a race condition in the build rule (Closes: #543458).
+
+ -- Sam Hocevar <sho@debian.org>  Sat, 12 Dec 2009 23:42:57 +0100
+
+zzuf (0.12-1) unstable; urgency=low
+
+  * New upstream release.
+  * debian/control:
+    + Set policy to 3.8.0. No changes required.
+
+ -- Sam Hocevar (Debian packages) <sam+deb@zoy.org>  Fri, 13 Jun 2008 13:57:07 +0000
+
+zzuf (0.11-1) unstable; urgency=low
+
+  * New upstream release.
+
+ -- Sam Hocevar (Debian packages) <sam+deb@zoy.org>  Sun, 18 May 2008 21:53:06 +0000
+
+zzuf (0.9-2) unstable; urgency=low
+
+  * debian/control:
+    + Set policy to 3.7.3.
+
+  * debian/patches/100_dup_dup2_implementation.diff:
+    + Patch from upstream SVN. Implements dup() and dup2() due to Debian-
+      specific internal changes to dd which caused the test suite to fail
+      (Closes: #474884).
+
+ -- Sam Hocevar (Debian packages) <sam+deb@zoy.org>  Sun, 27 Apr 2008 10:07:40 +0200
+
+zzuf (0.9-1) unstable; urgency=low
+
+  * New upstream release.
+    + This version no longer clobbers LD_PRELOAD (Closes: #413310).
+
+  * debian/rules:
+    + Don't use -$(MAKE) distclean.
+
+ -- Sam Hocevar (Debian packages) <sam+deb@zoy.org>  Tue, 10 Jul 2007 02:28:09 +0200
+
+zzuf (0.8.1-1) unstable; urgency=low
+
+  * New minor upstream release. Fixes an unsaved errno value and removes a
+    spurious debug message (Closes: #413046). Patches courtesy of Sami Liedes.
+
+ -- Sam Hocevar (Debian packages) <sam+deb@zoy.org>  Fri,  2 Mar 2007 01:00:42 +0100
+
+zzuf (0.8-1) unstable; urgency=low
+
+  * New upstream release.
+  * debian/copyright:
+    + Updated postal address.
+
+ -- Sam Hocevar (Debian packages) <sam+deb@zoy.org>  Sat, 24 Feb 2007 17:37:35 +0100
+
+zzuf (0.7-1) unstable; urgency=low
+
+  * New upstream release.
+
+ -- Sam Hocevar (Debian packages) <sam+deb@zoy.org>  Sun, 28 Jan 2007 02:11:15 +0100
+
+zzuf (0.6-1) unstable; urgency=low
+
+  * First Debian upload (Closes: #407072).
+
+ -- Sam Hocevar (Debian packages) <sam+deb@zoy.org>  Thu, 25 Jan 2007 14:32:04 +0100
+
+zzuf (0.5-1) unstable; urgency=low
+
+  * First public upstream release.
+
+ -- Sam Hocevar (Debian packages) <sam+deb@zoy.org>  Mon, 15 Jan 2007 01:02:44 +0100
+
+zzuf (0.4-1) unstable; urgency=low
+
+  * New upstream release.
+
+ -- Sam Hocevar (Debian packages) <sam+deb@zoy.org>  Fri, 12 Jan 2007 00:43:45 +0100
+
+zzuf (0.3-1) unstable; urgency=low
+
+  * New upstream release.
+
+ -- Sam Hocevar (Debian packages) <sam+deb@zoy.org>  Sun,  7 Jan 2007 22:32:05 +0100
+
+zzuf (0.2-1) unstable; urgency=low
+
+  * New upstream release.
+
+ -- Sam Hocevar (Debian packages) <sam+deb@zoy.org>  Sat,  6 Jan 2007 01:43:08 +0100
+
+zzuf (0.1-1) unstable; urgency=low
+
+  * Initial release.
+
+ -- Sam Hocevar (Debian packages) <sam+deb@zoy.org>  Sat, 23 Dec 2006 19:57:52 +0100
+
