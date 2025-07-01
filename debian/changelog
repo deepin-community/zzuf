@@ -1,3 +1,10 @@
+zzuf (0.15-deepin2) unstable; urgency=medium
+
+  * Prevent downgrading. Set version to 0.15-deepin2.
+  * Rebuild against glibc 2.38.
+
+ -- Tianyu Chen <sweetyfish@deepin.org>  Tue, 01 Jul 2025 16:48:29 +0800
+
 zzuf (0.15-3) unstable; urgency=medium
 
   * QA upload.
