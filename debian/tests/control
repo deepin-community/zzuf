@@ -1,0 +1,7 @@
+Test-Command: zzuf --help
+Restrictions: superficial
+
+Test-Command: zzat --help
+Restrictions: superficial
+
+Test-Command: zzat -l

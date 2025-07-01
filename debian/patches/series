@@ -1,1 +1,3 @@
 010_test-Do-not-check-win32-as-it-fails.patch
+020_fix-typos-in-manual.patch
+missing-prototypes.patch

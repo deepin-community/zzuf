@@ -1,0 +1,35 @@
+Author: Andreas Beckmann <anbe@debian.org>
+Description: fix building with -Werror=implicit-function-declaration
+
+--- a/src/zzat.c
++++ b/src/zzat.c
+@@ -52,6 +52,13 @@ typedef int ssize_t;
+ 
+ #include "util/getopt.h"
+ 
++#if defined HAVE__IO_GETC
++extern int _IO_getc(FILE *);
++#endif
++#if defined HAVE___FSEEKO64
++int __fseeko64 (FILE *, off64_t, int);
++#endif
++
+ static int run(char const *sequence, char const *file);
+ static void output(char const *buf, size_t len);
+ 
+--- a/src/libzzuf/lib-stream.c
++++ b/src/libzzuf/lib-stream.c
+@@ -53,6 +53,13 @@
+ #include "fuzz.h"
+ #include "fd.h"
+ 
++#if defined HAVE__IO_GETC
++extern int _IO_getc(FILE *);
++#endif
++#if defined HAVE___FSEEKO64
++int __fseeko64 (FILE *, off64_t, int);
++#endif
++
+ #if defined HAVE_FPOS64_T
+ #   define FPOS64_T fpos64_t
+ #else
