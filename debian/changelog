@@ -1,9 +1,47 @@
-zzuf (0.15-deepin1) unstable; urgency=medium
+zzuf (0.15-3) unstable; urgency=medium
 
-  * update version
-  * Add the debian upstream patch
+  * QA upload.
+  * Fix building with -Werror=implicit-function-declaration.
+    (Closes: #1066620)
 
- -- Deepin Packages Builder <packages@deepin.org>  Mon, 21 Nov 2022 11:05:24 +0800
+ -- Andreas Beckmann <anbe@debian.org>  Sun, 07 Apr 2024 04:40:37 +0200
+
+zzuf (0.15-2) unstable; urgency=medium
+
+  * QA upload.
+  * Set Debian QA Group as maintainer. (see #1011574)
+  * Using new DH level format. Consequently:
+      - debian/compat: removed.
+      - debian/control: changed from 'debhelper' to 'debhelper-compat' in
+        Build-Depends field and bumped level to 13.
+      - debian/not-installed: created to list some upstream files not installed
+        in final binaries.
+  * debian/control:
+      - Added Homepage field.
+      - Added Rules-Requires-Root: no.
+      - Added Vcs-* URLs to salsa.debian.org.
+      - Bumped Standards-Version to 4.6.0.
+      - Removed duplicate 'Section' field.
+      - Removed no longer needed build dependency dh-autoreconf.
+  * debian/copyright: migrated to 1.0 format.
+  * debian/docs: added file 'AUTHORS'.
+  * debian/patches/:
+      - 010_test-Do-not-check-win32-as-it-fails.patch: Created to
+        fix a fail test to win32. Thanks Alexandre Ghiti
+        <alexandre.ghiti@canonical.com>. (Closes: #997512)
+      - 020_fix-typos-in-manual.patch: created to fix typos in manual.
+  * debian/rules:
+      - Added the DEB_BUILD_MAINT_OPTIONS variable to improve the GCC
+        hardening.
+      - Removed '--with autoreconf' because it is default in DH 13.
+  * debian/salsa-ci.yml: created to provide CI tests for Salsa.
+  * debian/tests: created superficial tests.
+  * debian/upstream/metadata: created.
+  * debian/watch: created.
+  * debian/zzuf.docs: renamed to docs.
+  * debian/zzuf.install: renamed to install.
+
+ -- Guilherme de Paula Xavier Segundo <guilherme.lnx@gmail.com>  Fri, 27 May 2022 07:32:51 -0300
 
 zzuf (0.15-1) unstable; urgency=medium
 
@@ -173,4 +211,3 @@ zzuf (0.1-1) unstable; urgency=low
   * Initial release.
 
  -- Sam Hocevar (Debian packages) <sam+deb@zoy.org>  Sat, 23 Dec 2006 19:57:52 +0100
-
