@@ -1,0 +1,48 @@
+Author: Andreas Beckmann <anbe@debian.org>
+Description: undefine _FILE_OFFSET_BITS and _TIME_BITS sometimes
+ as we want to provide a library with replacements for e.g. both open()
+ and open64() (on 32-bit platforms), open() must not be remapped to
+ open64()
+ .
+ see https://bugs.debian.org/1067561 for some background
+Bug-Debian: https://bugs.debian.org/1068663
+
+--- a/src/libzzuf/lib-fd.c
++++ b/src/libzzuf/lib-fd.c
+@@ -18,6 +18,10 @@
+  *  load-fd.c: loaded file descriptor functions
+  */
+ 
++/* We want both open() and open64() */
++#undef _FILE_OFFSET_BITS
++#undef _TIME_BITS
++
+ #include "config.h"
+ 
+ /* Use this to get lseek64() on glibc systems */
+--- a/src/libzzuf/lib-mem.c
++++ b/src/libzzuf/lib-mem.c
+@@ -14,6 +14,10 @@
+  *  load-mem.c: loaded memory handling functions
+  */
+ 
++/* We want both mmap() and mmap64() */
++#undef _FILE_OFFSET_BITS
++#undef _TIME_BITS
++
+ #include "config.h"
+ 
+ /* Need this for off64_t */
+--- a/src/libzzuf/lib-stream.c
++++ b/src/libzzuf/lib-stream.c
+@@ -14,6 +14,10 @@
+  *  load-stream.c: loaded stream functions
+  */
+ 
++/* We want both fopen() and fopen64() */
++#undef _FILE_OFFSET_BITS
++#undef _TIME_BITS
++
+ #include "config.h"
+ 
+ /* Needed for getline() and getdelim() */
